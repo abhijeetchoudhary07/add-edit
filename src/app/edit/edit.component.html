@@ -1,0 +1,55 @@
+
+
+
+<div class="input">
+    <form  [formGroup]="editForm">
+        <div class="mb-3">
+            <label for="id" class="form-label">Id</label>
+            <input type="number" class="form-control" id="id" formControlName="id" >
+          </div>
+
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+          </div>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="number" class="form-label">Number</label>
+          <input type="Number" class="form-control" id="number" formControlName="number">
+        </div>
+      
+        <button type="submit" class="btn btn-primary" style="margin-left: 130px;" [disabled]="editForm.invalid" (click)="addData()">add</button>
+        <button type="submit" class="btn btn-info" style="margin-left: 20px;" (click)="editData()">edit</button>
+      </form>
+</div>
+<div>
+    <table class="table" class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Number</th>
+            <th scope="col" style="width: 155px;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ele of data index as index">
+                <th scope="col">{{ele.id}}</th>
+                <th scope="col">{{ele.name}}</th>
+                <th scope="col">{{ele.email}}</th>
+                <th scope="col">{{ele.number}}</th>
+                <th scope="col" [hidden]="mode" >
+                    
+            <button type="submit" class="btn btn-primary" (click)="delete(ele,index)">delete</button>
+            <button type="submit" class="btn btn-info" (click)="edit(ele,index)">edit</button>
+                </th>
+              </tr>
+         
+        </tbody>
+      </table>
+</div>

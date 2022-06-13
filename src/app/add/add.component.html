@@ -1,0 +1,50 @@
+
+<div class="input">
+  <form #editForm="ngForm">
+    <label for="id">id:</label>
+    <input style="margin-left: 32px;" type="number" name="id" id="id" #id="ngModel" ngModel required> <br>
+    <span *ngIf=" (id.touched || id.dirty )&& !id.valid">please enter valid Name</span> <br>
+       <label for="name">Name:</label>
+  <input type="text" style="margin-left: 6px;" name="name" id="name" #name="ngModel" pattern="^[a-zA-Z]+$" ngModel required> <br>
+  <span *ngIf=" (name.touched || name.dirty )&& !name.valid">please enter valid Name</span> <br>
+  <label for="email">Email:</label>
+  <input type="email" style="margin-left: 12px;" name="email" id="email"   #email="ngModel" ngModel  required> <br>
+  <span *ngIf=" (email.touched || email.dirty) && !email.valid">please enter valid email</span> <br>
+  <label for="contact">number</label>
+  <input type="number" name="contact" id="contact" ngModel #contact="ngModel" required> <br>
+  <span *ngIf="( contact.touched || contact.dirty) && !contact.valid">please enter valid Number</span> <br>
+          
+          
+  <button type="submit" style="margin-left: 120px;" class="btn btn-primary"  [disabled]="editForm.invalid" (click)="add(editForm.value)">add</button>
+  <button type="button" style="margin-left: 20px;" class="btn btn-info"  [disabled]="editForm.invalid" (click)="editData()" >update</button>
+      
+  </form>
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Number</th>
+            <th scope="col" style="width: 155px;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+             <tr *ngFor="let ele of data index as index">
+                <th scope="col">{{ele.id}}</th>
+                <th scope="col">{{ele.name}}</th>
+                <th scope="col">{{ele.email}}</th>
+                <th scope="col">{{ele.contact}}</th>
+                <th scope="col" >
+                    
+            <button type="submit" class="btn btn-primary" (click)="delete(ele,index)">delete</button>
+            <button type="submit" class="btn btn-info" (click)="edit(index)">edit</button>
+                </th>
+              </tr>
+         
+        </tbody>
+      </table>
+</div>

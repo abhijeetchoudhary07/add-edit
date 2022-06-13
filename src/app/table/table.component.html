@@ -1,0 +1,64 @@
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Number</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let ele of data index as i">
+            <th scope="col">{{ele.id}}</th>
+            <th scope="col">{{ele.name}}</th>
+            <th scope="col">{{ele.mobilenumber}}</th>
+            <th scope="col">{{ele.gender}}</th>
+            <th scope="col">{{ele.email}}</th>
+            <th scope="col"><button type="button" class="btn btn-danger" (click)="delete(ele,i)">delete</button>
+                 <button class="btn btn-info" (click)="onEdit(ele,i)">edit</button></th>
+
+        </tr>
+       
+        </tbody>
+      </table>
+      <button class="btn btn-info" (click)="hidedata()">Add</button>
+
+
+
+ <form  [formGroup]="loginForm" name="form"  [hidden]="hide">
+    <div class="input" >
+        <!-- <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">ID</label>
+            <input type="number" class="form-control" name="id" formControlName="id" id="exampleFormControlInput1">
+          </div> -->
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"> Name</label>
+            <input type="text" class="form-control" formControlName="name" id="exampleFormControlInput1" >
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Number</label>
+            <input type="number" class="form-control" formControlName="mobilenumber" id="exampleFormControlInput1" >
+          </div>
+         <div style="padding-left: 20px;">
+            <label for="gender">Gender:</label>
+            <input type="radio" id="male" name="gender" [value]="male" formControlName="gender" >
+            <label for="gender" >Male</label>
+            <input type="radio" id="female" name="gender" [value]="female" formControlName="gender">
+            <label for="gender" >Female</label>
+            <input type="radio" id="other" name="gender"  [value]="other"formControlName="gender">
+            <label for="gender">other</label><br> 
+         </div>
+    <br>    
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="email" >
+          </div>
+        
+                     <button class="btn btn-info" (click)="add()">{{mode? 'add' : 'update'}}</button>
+                     
+                     
+    </div>
+ </form>
